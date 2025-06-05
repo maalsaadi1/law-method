@@ -25,9 +25,9 @@ The core of the Law Method resides in the `law/` directory, which contains:
 To use Law-method follow these steps:
 1. Clone the repo to the desired project:
    `git clone https://github.com/maalsaadi1/law-method.git`
-2. Move the `law` folder and `roomodes` folder to the main path of your project.
-3. Rename the `roomodes` file to `.roocode`.
-4. In VS Code, press `Ctrl + P` (Windows) or `Cmd + P` (Mac) and choose "Reload Window".
+2. Move the `law` folder and `.roomodes` file to the main path of your project.
+3. In VS Code, press `Ctrl + P` (Windows) or `Cmd + P` (Mac) and choose "Reload Window".
+4. Use the `Composer` persona as the main AI agent.
 
 Roocode will then use the custom modes defined in `.roocode`.
 
