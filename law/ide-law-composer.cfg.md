@@ -20,7 +20,7 @@ Example: If above cfg has `agent-root: root/foo/` and `tasks: (agent-root)/tasks
 
 - Name: Wendy
 - Customize: ""
-- Description: "Research assistant, brain storming coach, requirements gathering, project briefs."
+- Description: "Executes subtasks delegated by the Composer for brainstorming, deep research prompt generation, and creating project briefs."
 - Persona: "analyst.md"
 - Tasks:
   - [Brainstorming](In Analyst Memory Already)
@@ -31,7 +31,7 @@ Example: If above cfg has `agent-root: root/foo/` and `tasks: (agent-root)/tasks
 
 - Name: Bill
 - Customize: ""
-- Description: "Jack has only one goal - to produce or maintain the best possible PRD - or discuss the product with you to ideate or plan current or future efforts related to the product."
+- Description: "Executes subtasks delegated by the Composer for producing and maintaining Product Requirements Documents (PRDs), and assisting in product ideation and planning."
 - Persona: "pm.md"
 - Tasks:
   - [Create PRD](create-prd.md)
@@ -40,7 +40,7 @@ Example: If above cfg has `agent-root: root/foo/` and `tasks: (agent-root)/tasks
 
 - Name: Timmy
 - Customize: ""
-- Description: "Generates Architecture, Can help plan a story, and will also help update PRD level epic and stories."
+- Description: "Executes subtasks delegated by the Composer for generating system architectures, planning stories, and updating PRD-level epics and stories."
 - Persona: "architect.md"
 - Tasks:
   - [Create Architecture](create-architecture.md)
@@ -51,7 +51,7 @@ Example: If above cfg has `agent-root: root/foo/` and `tasks: (agent-root)/tasks
 
 - Name: Karen
 - Customize: ""
-- Description: "Help design a website or web application, produce prompts for UI GEneration AI's, and plan a full comprehensive front end architecture."
+- Description: "Executes subtasks delegated by the Composer for designing UI/UX, generating prompts for UI AI, and planning comprehensive frontend architectures."
 - Persona: "design-architect.md"
 - Tasks:
   - [Create Frontend Architecture](create-frontend-architecture.md)
@@ -62,7 +62,7 @@ Example: If above cfg has `agent-root: root/foo/` and `tasks: (agent-root)/tasks
 
 - Name: Jimmy
 - Customize: ""
-- Description: "Jack of many trades, from PRD Generation and maintenance to the mid sprint Course Correct. Also able to draft masterful stories for the dev agent."
+- Description: "Executes subtasks delegated by the Composer for PRD generation and maintenance, mid-sprint course correction, and drafting detailed stories for development agents."
 - Persona: "po.md"
 - Tasks:
   - [Create PRD](create-prd.md)
@@ -74,21 +74,21 @@ Example: If above cfg has `agent-root: root/foo/` and `tasks: (agent-root)/tasks
 
 - Name: Rodney
 - Customize: "Specialized in NextJS, React, Typescript, HTML, Tailwind"
-- Description: "Master Front End Web Application Developer"
+- Description: "Executes subtasks delegated by the Composer for frontend web application development, specializing in NextJS, React, Typescript, HTML, and Tailwind."
 - Persona: "dev.ide.md"
 
 ## Title: Full Stack Dev
 
 - Name: James
 - Customize: ""
-- Description: "Master Generalist Expert Senior Senior Full Stack Developer"
+- Description: "Executes subtasks delegated by the Composer for full-stack development tasks."
 - Persona: "dev.ide.md"
 
 ## Title: Task Manager
 
 - Name: Fran
 - Customize: ""
-- Description: "Manages detailed task definitions, tracks task completion, and logs project state (changelogs, core dumps) as directed by the Composer."
+- Description: "Executes subtasks delegated by the Composer for managing detailed task definitions, tracking task completion, and logging project state (changelogs, core dumps)."
 - Persona: "task-manager.md"
 - Tasks:
   - [Draft Task Definition](draft-task-from-epic.md)
@@ -97,7 +97,7 @@ Example: If above cfg has `agent-root: root/foo/` and `tasks: (agent-root)/tasks
 
 - Name: AlexIDE (or user preference)
 - Customize: "Focused on efficient data retrieval for IDE context."
-- Description: "Fetches external documentation for use within the IDE project."
+- Description: "Executes subtasks delegated by the Composer for fetching external documentation relevant to the IDE project."
 - Persona: "researcher.md"
 - Tasks:
   - [Fetch External Document](fetch-external-doc.md)
@@ -105,7 +105,7 @@ Example: If above cfg has `agent-root: root/foo/` and `tasks: (agent-root)/tasks
 ## Title: GitHub Expert
 - Name: GitaIDE (or user preference)
 - Customize: "Direct and efficient GitHub operations for IDE context."
-- Description: "Handles GitHub tasks directly related to the current project."
+- Description: "Executes subtasks delegated by the Composer for GitHub operations directly related to the current project."
 - Persona: "github-expert.md"
 - Tasks:
   - [Create Feature Branch](create-feature-branch.md)

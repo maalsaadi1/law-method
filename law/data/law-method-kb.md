@@ -191,77 +191,77 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Understanding the distinct roles and responsibilities of each agent is key to effectively navigating the Law Method workflow. While the "Vibe CEO" provides overall direction, each agent specializes in different aspects of the project lifecycle. The Law Method introduces Orchestrator agents that can embody these roles, with configurations specified in `web-Law-Method-composer-agent.cfg.md` for web and `ide-Law-Method-composer.cfg.md` for IDE environments.
 
-- **Orchestrator Agent (Law Method Orchestrator):**
+- **Composer Agent (Law Method Orchestrator):**
 
-  - **Function:** The primary composer, initially "Law Method Orchestrator." It can embody various specialized agent personas. It handles general Law Method queries, provides oversight, and is the go-to when unsure which specialist is needed.
+  - **Function:** The central orchestrator of the Law Method workflow. The Composer's primary role is to break down high-level objectives into granular subtasks and delegate these subtasks to the most appropriate specialized agent personas. It provides overall oversight, manages the flow of information, and ensures alignment with the project vision.
   - **Persona Reference:** `personas#Law-Method-Orchestrator` (Web) or implicitly the core of `ide-Law-Method-composer.md` (IDE).
   - **Key Data/Knowledge:** Accesses `data#law-method-kb-data` (Web) for its knowledge base.
   - **Types:**
-    - **Web Orchestrator:** Built using a script, leverages large context windows of platforms like Gemini 2.5 or OpenAI GPTs. Uses bundled assets. Its behavior and available agents are defined in `web-Law-Method-composer-agent.cfg.md`.
-    - **IDE Orchestrator:** Operates directly in IDEs like Cursor or Windsurf without a build step, loading persona and task files dynamically based on its configuration (`ide-Law-Method-composer.cfg.md`). The composer itself is defined in `ide-Law-Method-composer.md`.
-  - **Key Feature:** Simplifies agent management, especially in environments with limitations on the number of custom agents.
+    - **Web Composer:** Built using a script, leverages large context windows of platforms like Gemini 2.5 or OpenAI GPTs. Uses bundled assets. Its behavior and available agents are defined in `web-Law-Method-composer-agent.cfg.md`.
+    - **IDE Composer:** Operates directly in IDEs like Cursor or Windsurf without a build step, loading persona and task files dynamically based on its configuration (`ide-Law-Method-composer.cfg.md`). The composer itself is defined in `ide-Law-Method-composer.md`.
+  - **Key Feature:** Simplifies agent management and orchestrates the subtask delegation process, especially in environments with limitations on the number of custom agents.
 
 - **Analyst:**
 
-  - **Function:** Handles research, requirements gathering, brainstorming, and the creation of Project Briefs.
+  - **Function:** Receives subtasks from the Composer related to research, requirements gathering, brainstorming, and the creation of Project Briefs. Completes these subtasks and provides the output back to the Composer.
   - **Web Persona:** `Analyst (Mary)` with persona `personas#analyst`. Customized to be "a bit of a know-it-all, and likes to verbalize and emote." Uses `templates#project-brief-tmpl`.
   - **IDE Persona:** `Analyst (Larry)` with persona `analyst.md`. Similar "know-it-all" customization. Tasks for Brainstorming, Deep Research Prompt Generation, and Project Brief creation are often defined within the `analyst.md` persona itself ("In Analyst Memory Already").
   - **Output:** `Project Brief`.
 
 - **Product Manager (PM):**
 
-  - **Function:** Responsible for creating and maintaining Product Requirements Documents (PRDs), overall project planning, and ideation related to the product.
+  - **Function:** Receives subtasks from the Composer for creating and maintaining Product Requirements Documents (PRDs), overall project planning, and product ideation. Completes these subtasks and provides the output back to the Composer.
   - **Web Persona:** `Product Manager (John)` with persona `personas#pm`. Utilizes `checklists#pm-checklist` and `checklists#change-checklist`. Employs `templates#prd-tmpl`. Key tasks include `tasks#create-prd`, `tasks#correct-course`, and `tasks#create-deep-research-prompt`.
   - **IDE Persona:** `Product Manager (PM) (Jack)` with persona `pm.md`. Focused on producing/maintaining the PRD (`create-prd.md` task) and product ideation/planning.
   - **Output:** `Product Requirements Document (PRD)`.
 
 - **Architect:**
 
-  - **Function:** Designs system architecture, handles technical design, and ensures technical feasibility.
+  - **Function:** Receives subtasks from the Composer related to designing system architecture, handling technical design, and ensuring technical feasibility. Completes these subtasks and provides the output back to the Composer.
   - **Web Persona:** `Architect (Fred)` with persona `personas#architect`. Uses `checklists#architect-checklist` and `templates#architecture-tmpl`. Tasks include `tasks#create-architecture` and `tasks#create-deep-research-prompt`.
   - **IDE Persona:** `Architect (Mo)` with persona `architect.md`. Customized to be "Cold, Calculating, Brains behind the agent crew." Generates architecture (`create-architecture.md` task), helps plan tasks (`draft-task-from-epic.md`), and can update PO-level epics/tasks (`doc-sharding-task.md`).
   - **Output:** `Architecture Document`.
 
 - **Design Architect:**
 
-  - **Function:** Focuses on UI/UX specifications, front-end technical architecture, and can generate prompts for AI UI generation services.
+  - **Function:** Receives subtasks from the Composer focused on UI/UX specifications, front-end technical architecture, and generating prompts for AI UI generation services. Completes these subtasks and provides the output back to the Composer.
   - **Web Persona:** `Design Architect (Jane)` with persona `personas#design-architect`. Uses `checklists#frontend-architecture-checklist`, `templates#front-end-architecture-tmpl` (for FE architecture), and `templates#front-end-spec-tmpl` (for UX/UI Spec). Tasks: `tasks#create-frontend-architecture`, `tasks#create-ai-frontend-prompt`, `tasks#create-uxui-spec`.
   - **IDE Persona:** `Design Architect (Millie)` with persona `design-architect.md`. Customized to be "Fun and carefree, but a frontend design master." Helps design web apps, produces UI generation prompts (`create-ai-frontend-prompt.md` task), plans FE architecture (`create-frontend-architecture.md` task), and creates UX/UI specs (`create-uxui-spec.md` task).
   - **Output:** `UX/UI Specification`, `Front-end Architecture Plan`, AI UI generation prompts.
 
 - **Product Owner (PO):**
 
-  - **Function:** Agile Product Owner responsible for validating documents, ensuring development sequencing, managing the product backlog, running master checklists, handling mid-sprint re-planning, and drafting user tasks.
+  - **Function:** Receives subtasks from the Composer for validating documents, ensuring development sequencing, managing the product backlog, running master checklists, handling mid-sprint re-planning, and drafting user tasks. Completes these subtasks and provides the output back to the Composer.
   - **Web Persona:** `PO (Sarah)` with persona `personas#po`. Uses `checklists#po-master-checklist`, `checklists#task-draft-checklist`, `checklists#change-checklist`, and `templates#task-tmpl`. Tasks include `tasks#draft-task-from-epic`, `tasks#doc-sharding-task` (extracts epics and shards architecture), and `tasks#correct-course`.
   - **IDE Persona:** `Product Owner AKA PO (Curly)` with persona `po.md`. Described as a "Jack of many trades." Tasks include `create-prd.md`, `draft-task-from-epic.md`, `doc-sharding-task.md`, and `correct-course.md`.
   - **Output:** User Tasks, managed PRD/Backlog.
 
 - **Task Manager:**
 
-  - **Function:** Manages the detailed definition of tasks from Epics, oversees the completion of development tasks via checkboxes in `task-tmpl.md`, and is critical for logging changelogs, core dumps, and main task list updates under Law Method's direction.
+  - **Function:** Receives subtasks from the Composer for managing the detailed definition of tasks from Epics, overseeing the completion of development tasks via checkboxes in `task-tmpl.md`, and logging changelogs, core dumps, and main task list updates. Completes these subtasks and provides the output back to the Composer.
   - **Web Persona:** `Task Manager (Bob)` with persona `personas#task-manager`. Described as "A very Technical Task Manager." Uses `checklists#change-checklist`, `checklists#task-dod-checklist`, `checklists#task-draft-checklist`, and `templates#task-tmpl`. Tasks: `tasks#checklist-run-task`, `tasks#correct-course`, `tasks#draft-task-from-epic`.
   - **IDE Persona:** `Task Manager (SallyTM)` with persona `task-manager.ide.md`. Described as "Super Technical and Detail Oriented," specialized in "Next Task Generation" (likely leveraging the `task-manager.ide.md` persona's capabilities).
 
 - **Developer Agents (DEV):**
-  - **Function:** Implement tasks one at a time. Can be generic or specialized.
+  - **Function:** Receive subtasks from the Composer for implementing code. They work on tasks one at a time and provide completed code or updates back to the Composer. Can be generic or specialized.
   - **Web Persona:** `DEV (Dana)` with persona `personas#dev`. Described as "A very Technical Senior Software Developer."
   - **IDE Personas:** Multiple configurations can exist, using the `dev.ide.md` persona file (optimized for <6K characters for IDEs). Examples:
     - `Frontend Dev (DevFE)`: Specialized in NextJS, React, Typescript, HTML, Tailwind.
     - `Dev (Dev)`: Master Generalist Expert Senior Full Stack Developer.
-  - **Configuration:** Specialized agents can be configured in `ide-Law-Method-composer.cfg.md` for the IDE Orchestrator, or defined for the Web Orchestrator. Standalone IDE developer agents (e.g., `dev.ide.md`) are also available.
-  - **When to Use:** During the implementation phase, typically working within an IDE.
+  - **Configuration:** Specialized agents can be configured in `ide-Law-Method-composer.cfg.md` for the IDE Composer, or defined for the Web Composer. Standalone IDE developer agents (e.g., `dev.ide.md`) are also available.
+  - **When to Use:** During the implementation phase, typically working within an IDE, after receiving a delegated subtask from the Composer.
 
 - **Researcher:**
-  - **Function:** Conducts in-depth research on specific topics, technologies, or external documentation to provide necessary context and information for other agents (e.g., Analyst, PM, Architect).
+  - **Function:** Receives subtasks from the Composer for conducting in-depth research on specific topics, technologies, or external documentation. Provides necessary context and summarized information back to the Composer or other agents as directed.
   - **Web Persona:** `Researcher (Alice)` with persona `personas#researcher`. Uses `templates#research-summary-report-tmpl`. Tasks: `tasks#fetch-external-doc`, `tasks#create-deep-research-prompt`.
   - **IDE Persona:** `Researcher (BobR)` with persona `researcher.md`. Focuses on fetching external documentation and summarizing research.
-  - **Typical Engagement:** Engaged when Analyst needs market data, PM needs competitive analysis, or Architect needs to evaluate new technologies.
+  - **Typical Engagement:** Engaged when the Composer determines that external information is needed to complete a higher-level task (e.g., for Analyst's market data, PM's competitive analysis, or Architect's technology evaluation).
 
 - **GitHub Expert:**
-  - **Function:** Manages GitHub repository operations, including creating feature branches, handling pull requests, and ensuring proper version control.
+  - **Function:** Receives subtasks from the Composer for managing GitHub repository operations, including creating feature branches, handling pull requests, and ensuring proper version control. Completes these subtasks and reports back to the Composer.
   - **Web Persona:** `GitHub Expert (Charlie)` with persona `personas#github-expert`. Uses `templates#pull-request-description-tmpl`. Tasks: `tasks#create-feature-branch`, `tasks#create-pull-request`.
   - **IDE Persona:** `GitHub Expert (DaveG)` with persona `github-expert.md`. Specializes in repository setup, branching strategies, and PR management.
-  - **Typical Engagement:** Engaged after initial project creation for repo setup, when a new feature requires a dedicated branch, or for managing code merges.
+  - **Typical Engagement:** Engaged after initial project creation for repo setup, when a new feature requires a dedicated branch, or for managing code merges, all as delegated subtasks from the Composer.
 
 ## NAVIGATING THE Law Method WORKFLOW - INITIAL GUIDANCE
 
@@ -350,21 +350,21 @@ The Law Method IDE Orchestrator (`ide-Law-Method-composer.md` configured by `ide
 
 Always consider the trade-offs between the Orchestrator's versatility and the efficiency of dedicated agents, especially concerning your IDE's capabilities and the complexity of your project.
 
-## SUGGESTED ORDER OF AGENT ENGAGEMENT (TYPICAL FLOW)
+## SUBTASK-BASED ORCHESTRATION: TYPICAL FLOW
 
-**NOTE:** This is a general guideline. The Law Method is iterative; phases/agents might be revisited.
+**NOTE:** This is a general guideline. The Law Method is iterative; phases/agents might be revisited. The Composer orchestrates the entire flow by delegating subtasks to specialized agents.
 
-1. **Analyst** - brainstorm and create a project brief.
-2. **PM (Product Manager)** - use the brief to produce a PRD with high level epics and tasks.
-3. **Design Architect UX UI Spec for PRD (If project has a UI)** - create the front end UX/UI Specification.
-4. **Architect** - create the architecture and ensure we can meet the prd requirements technically - with enough specification that the dev agents will work consistently.
-5. **Design Architect (If project has a UI)** - create the front end architecture and ensure we can meet the prd requirements technically - with enough specification that the dev agents will work consistently.
-6. **Design Architect (If project has a UI)** - Optionally create a prompt to generate a UI from AI services such as Lovable or V0 from Vercel.
-7. **PO**: Validate documents are aligned, sequencing makes sense, runs a final master checklist. The PO can also help midstream development replan or course correct if major changes occur.
-8. **Researcher**: If Analyst, PM, or Architect needs external information, the Researcher can be engaged to fetch and summarize relevant documentation.
-9. **GitHub Expert**: Engaged for repository setup after initial project creation, creating feature branches, and managing pull requests.
-10. **Task Manager**: Generates detailed tasks from Epics, manages development task completion, and logs changelogs, core dumps, and main task list updates under Law Method's direction. This is generally done in the IDE after each task is completed by the Developer Agents.
-11. **Developer Agents**: Implement tasks one at a time. You can craft different specialized Developer Agents, or use a generic developer agent. It is recommended to create specialized developer agents and configure them in the `ide-Law-Method-composer.cfg`.
+1.  **Composer delegates to Analyst:** The Composer initiates the project by delegating a subtask to the Analyst to brainstorm and create a project brief.
+2.  **Composer delegates to PM (Product Manager):** Once the brief is ready, the Composer delegates a subtask to the PM to use the brief to produce a PRD with high-level epics and tasks.
+3.  **Composer delegates to Design Architect (If project has a UI):** The Composer delegates a subtask to the Design Architect to create the front-end UX/UI Specification for the PRD.
+4.  **Composer delegates to Architect:** The Composer delegates a subtask to the Architect to create the overall system architecture, ensuring technical feasibility and providing specifications for development.
+5.  **Composer delegates to Design Architect (If project has a UI):** The Composer delegates a subtask to the Design Architect to create the front-end architecture, ensuring it aligns with the overall architecture and PRD.
+6.  **Composer delegates to Design Architect (If project has a UI):** Optionally, the Composer delegates a subtask to the Design Architect to create a prompt for generating UI from AI services (e.g., Lovable or V0 from Vercel).
+7.  **Composer delegates to PO:** The Composer delegates a subtask to the PO to validate documents for alignment, ensure logical sequencing, and run a final master checklist. The PO also handles mid-stream re-planning or course correction if major changes occur, reporting back to the Composer.
+8.  **Composer delegates to Researcher:** If any specialist agent (Analyst, PM, Architect, etc.) requires external information, the Composer delegates a subtask to the Researcher to fetch and summarize relevant documentation. The Researcher provides the information back to the Composer or directly to the requesting agent as instructed by the Composer.
+9.  **Composer delegates to GitHub Expert:** The Composer delegates subtasks to the GitHub Expert for repository setup after initial project creation, creating feature branches, and managing pull requests.
+10. **Composer delegates to Task Manager:** The Composer delegates subtasks to the Task Manager to generate detailed tasks from Epics, manage development task completion (via checkboxes in `task-tmpl.md`), and log changelogs, core dumps, and main task list updates. This is generally done in the IDE after each task is completed by the Developer Agents.
+11. **Composer delegates to Developer Agents:** The Composer delegates specific implementation subtasks to Developer Agents. Developer Agents work on these tasks one at a time, providing completed code or updates back to the Composer. Different specialized Developer Agents can be configured in `ide-Law-Method-composer.cfg` or a generic developer agent can be used.
 
 ## HANDLING MAJOR CHANGES
 
@@ -382,22 +382,24 @@ The Law Method can be orchestrated through different interfaces, typically a web
 
 ### CONCEPTUAL, PLANNING PHASES and TECHNICAL DESIGN
 
-- **Interface:** Often best managed via a Web UI (leveraging the **Web Agent Orchestrator** with its bundled assets and `agent-prompt.txt`) or dedicated project management tools where composer agents can guide the process.
+- **Interface:** Often best managed via a Web UI (leveraging the **Web Composer Agent** with its bundled assets and `agent-prompt.txt`) or dedicated project management tools where the Composer can guide the process.
 - **Agents Involved:**
-  - **Analyst:** Brainstorming, research, and initial project brief creation.
-  - **PM (Product Manager):** PRD development, epic and high-level story definition.
-  - **Architect / Design Architect (UI):** Detailed technical design and specification.
-  - **PO:** Checklist runner to make sure all of the documents are aligned.
-- **Activities:** Defining the vision, initial requirements gathering, market analysis, high-level planning. The `web-Law-Method-composer-agent.md` and its configuration likely support these activities.
+  - **Composer:** Orchestrates the entire process, delegating subtasks.
+  - **Analyst:** Receives subtasks for brainstorming, research, and initial project brief creation.
+  - **PM (Product Manager):** Receives subtasks for PRD development, epic, and high-level story definition.
+  - **Architect / Design Architect (UI):** Receive subtasks for detailed technical design and specification.
+  - **PO:** Receives subtasks for running checklists to ensure document alignment.
+- **Activities:** Defining the vision, initial requirements gathering, market analysis, high-level planning, all orchestrated by the Composer. The `web-Law-Method-composer-agent.md` and its configuration likely support these activities.
 
 ### DOCUMENTATION MANAGEMENT & IMPLEMENTATION PHASES
 
-- **Interface:** Primarily within the Integrated Development Environment (IDE), leveraging specialized agents (standalone or via the **Law Method Agent Orchestrator** configured with `ide-Law-Method-composer.cfg.md`).
+- **Interface:** Primarily within the Integrated Development Environment (IDE), leveraging specialized agents (standalone or as delegated by the **Law Method Composer Agent** configured with `ide-Law-Method-composer.cfg.md`).
 - **Agents Involved:**
-  - "**PO or Task Manager or Law Method Orchestrator Agent:** Run the doc sharing task to split the large files that have been created (PRD, Architecture etc...) into smaller granular documents that are easier for the Task Manager and Dev Agents to work with.
-  - **Task Manager:** Detailed task generation, backlog refinement, often directly in the IDE or tools integrated with it.
-  - **Developer Agents:** Code implementation for tasks, working directly with the codebase in the IDE.
-- **Activities:** Detailed architecture, front-end/back-end design, code development, testing, leveraging IDE tasks (see "LEVERAGING IDE TASKS FOR EFFICIENCY"), using configurations like `ide-Law-Method-composer.cfg.md`.
+  - **Composer:** Delegates subtasks for document management and implementation.
+  - **PO or Task Manager:** Receive subtasks from the Composer to run the document sharding task, splitting large files (PRD, Architecture, etc.) into smaller, granular documents.
+  - **Task Manager:** Receives subtasks for detailed task generation and backlog refinement, often directly in the IDE or tools integrated with it.
+  - **Developer Agents:** Receive subtasks for code implementation, working directly with the codebase in the IDE.
+- **Activities:** Detailed architecture, front-end/back-end design, code development, testing, all executed by specialized agents based on subtasks delegated by the Composer. This leverages IDE tasks (see "LEVERAGING IDE TASKS FOR EFFICIENCY") and configurations like `ide-Law-Method-composer.cfg.md`.
 
 ### Law Method FILES
 
@@ -405,10 +407,10 @@ Understanding key files helps in navigating and customizing the Law Method proce
 
 - **Knowledge & Configuration:**
   - `law-method-agent/data/law-method-kb.md`: This central knowledge base.
-  - `ide-Law-Method-composer.cfg.md`: Configuration for IDE developer agents.
-  - `ide-Law-Method-composer.md`: Definition of the IDE composer agent.
-  - `web-Law-Method-composer-agent.cfg.md`: Configuration for the web composer agent.
-  - `web-Law-Method-composer-agent.md`: Definition of the web composer agent.
+  - `ide-Law-Method-composer.cfg.md`: Configuration for IDE Composer and its delegated agents.
+  - `ide-Law-Method-composer.md`: Definition of the IDE Composer agent.
+  - `web-Law-Method-composer-agent.cfg.md`: Configuration for the web Composer agent.
+  - `web-Law-Method-composer-agent.md`: Definition of the web Composer agent.
 - **Task Definitions:**
   - Files in `law-method-agent/tasks/` or `law-method-agent/checklists/` (e.g., `checklist-run-task.md`): Reusable prompts for specific actions and also used by agents to keep agent persona files lean.
 - **Agent Personas & Templates:**
