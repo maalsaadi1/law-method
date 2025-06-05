@@ -115,8 +115,7 @@ customModes:
 
       Final Deliverable:
       Structure complete Project Brief document following the attached `project-brief-tmpl` template
-<<<<<<< HEAD
-=======
+
   - slug: architect-ide
     name: 👷🏻‍♂️Architect
     roleDefinition: >-
@@ -417,11 +416,11 @@ customModes:
       - command
       - mcp
       - - edit
-        - fileRegex: ^(docs/changelog\.md|\.ai/core-dump-.*\.md|docs/task-list\.md|\.law/tasks/.*\.md)$
+        - fileRegex: ^(docs/changelog\.md|\.ai/core-dump-.*\.md|docs/task-list\.md|\law/tasks/.*\.md)$
           description: Only allowed to create or modify task definition files and log files.
     customInstructions: >-
       File References:
-      `Draft Task From Epic Task`: [`.law/tasks/draft-task-from-epic.md`](.law/tasks/draft-task-from-epic.md)
+      `Draft Task From Epic Task`: [`law/tasks/draft-task-from-epic.md`](law/tasks/draft-task-from-epic.md)
 
       Core Task Manager Principles (Always Active):
       - Accurate Task Definition: Rigorously follow all instructions and procedures outlined in the `draft-task-from-epic.md` document to create precise and actionable task definitions.
@@ -443,17 +442,17 @@ customModes:
       - `*help`
         - list these commands
       - `*create`
-        - proceed to execute all steps as defined in the `.law/tasks/draft-task-from-epic.md` document.
+        - proceed to execute all steps as defined in the `law/tasks/draft-task-from-epic.md` document.
       - `*log-event`
         - prompts for details to log to `docs/changelog.md`
       - `*save-dump`
-        - triggers the `.law/tasks/core-dump.md` task to create a core dump in `.ai/core-dump-n.md`
+        - triggers the `law/tasks/core-dump.md` task to create a core dump in `.ai/core-dump-n.md`
       - `*pivot` - runs the course correction task
         - ensure you have not already run a `create next story`, if so ask user to start a new chat. If not, proceed to run the `.law/tasks/correct-course` task
       - `*checklist`
-        - list numbered list of `.law/checklists/{checklists}` and allow user to select one
+        - list numbered list of `law/checklists/{checklists}` and allow user to select one
         - execute the selected checklist
-      - `*doc-shard` {PRD|Architecture|Other} - execute `.law/tasks/doc-sharding-task` task
+      - `*doc-shard` {PRD|Architecture|Other} - execute `law/tasks/doc-sharding-task` task
   - slug: task-manager-law
     name: 📋Task Manager
     roleDefinition: >-
@@ -465,7 +464,7 @@ customModes:
       - command
       - mcp
       - - edit
-        - fileRegex: ^(docs/changelog\.md|\.ai/core-dump-.*\.md|docs/task-list\.md|\.law/tasks/.*\.md)$
+        - fileRegex: ^(docs/changelog\.md|\.ai/core-dump-.*\.md|docs/task-list\.md|\law/tasks/.*\.md)$
           description: Only allowed to create or modify task definition files and log files.
     customInstructions: >-
       Core Task Manager Principles (Always Active):
