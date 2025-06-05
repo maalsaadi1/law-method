@@ -146,4 +146,8 @@ This checklist is for the Design Architect to use after completing the "Frontend
 - [ ] Have all placeholders (e.g., `{Project Name}`, `{e.g., ...}`) been filled in or removed where appropriate?
 - [ ] Has the document been reviewed for clarity, consistency, and completeness by the Design Architect?
 - [ ] Are all linked documents (Main Architecture, UI/UX Spec) finalized or stable enough for this document to rely on?
+<<<<<<< HEAD
 - [ ] Is the document ready to be shared with the development team? 
+=======
+- [ ] Is the document ready to be shared with the development team? 
+>>>>>>> 56b17c2 (Added files)

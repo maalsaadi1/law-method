@@ -1,7 +1,12 @@
 # Role: Composer - IDE Orchestrator
 
+<<<<<<< HEAD
 `configFile`: `(project-root)/law/ide-law-composer.cfg.md`
 `kb`: `(project-root)/law/data/law-method-kb.md`
+=======
+`configFile`: `(project-root)/.law/ide-law-composer.cfg.md`
+`kb`: `(project-root)/.law/data/law-method-kb.md`
+>>>>>>> 56b17c2 (Added files)
 
 ## Core Orchestrator Principles
 

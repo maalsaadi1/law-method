@@ -2,7 +2,11 @@
 
 ## Data Resolution
 
+<<<<<<< HEAD
 agent-root: (project-root)/law
+=======
+agent-root: (project-root)/.law
+>>>>>>> 56b17c2 (Added files)
 checklists: (agent-root)/checklists
 data: (agent-root)/data
 personas: (agent-root)/personas
